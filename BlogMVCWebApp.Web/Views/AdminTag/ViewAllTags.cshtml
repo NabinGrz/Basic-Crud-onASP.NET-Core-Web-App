@@ -1,0 +1,43 @@
+﻿@model List<BlogMVCWebApp.Web.Models.DomainModel.Tag>
+
+<!-- Use semantic HTML tags and classes for better accessibility -->
+<header class="bg-secondary bg-opacity-10 py-2">
+    <div class="container">
+        <h1>View Blog Tags: Admin</h1>
+    </div>
+</header>
+
+<main class="container py-2">
+    <!-- Use ASP.NET Core Tag Helpers for cleaner and more maintainable HTML -->
+    <a asp-action="Add" asp-controller="AdminTag" class="btn btn-primary">Add Tag</a>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Display Name</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Use the 'foreach' loop to iterate through the model items -->
+            @foreach (var tag in Model)
+            {
+                <tr>
+                    <td>@tag.Name</td>
+                    <td>@tag.DisplayName</td>
+                    <td>
+                        <!-- Use the 'form' tag to wrap the edit and delete buttons for better semantics and accessibility -->
+                        <form method="post" asp-action="DeleteTag" asp-controller="AdminTag">
+                            <!-- Use 'a' tag for navigation, instead of button -->
+                            <a href="ViewOrEditTag/@tag.ID" class="btn btn-primary">Edit</a>
+                            <!-- Use a hidden input field to pass the ID of the tag to be deleted -->
+                            <input type="hidden" name="id" value="@tag.ID" />
+                            <!-- Use 'button' tag for submit button -->
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</main>

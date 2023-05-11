@@ -1,0 +1,32 @@
+﻿@*This model is for this view here
+This is Binding model to this view*@
+@model BlogMVCWebApp.Web.Models.ViewModels.AddTagRequest
+
+
+<div class="bg-secondary bg-opacity-10 py-2">
+    <div class="container">
+        <h1>Add Blog Tag:Admin</h1>
+    </div>
+</div>
+@* Read Incoming Request
+            Model Binding*@
+<div class="container py-5">
+    <form method="post">
+        <div class="mb-3">
+            <label class="form-label">Name</label>
+           @* Read Incoming Request*@
+           @* <input type="text" class="form-control" id="name" name="name"/>*@
+            <input type="text" class="form-control" id="name" asp-for="Name"/>
+           
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Display Name</label>
+            @* Read Incoming Request*@
+           @* <input type="text" class="form-control" id="displayName" name="displayName"/>*@
+            <input type="text" class="form-control" id="displayName" asp-for="DisplayName" />
+        </div>
+        <div class="mb-3">
+           <button type="submit" class="btn btn-dark">Submit</button>
+        </div>
+    </form>
+</div>
